@@ -1,22 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: unifi-home-ingress
+  name: unifi-ingress
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   tls:
   - hosts:
-    - unifi.home.hlads.net
-    secretName: unifi-home-tls
+    - unifi.hlads.net
+    secretName: unifi-tls
   rules:
-  - host: unifi.home.hlads.net
+  - host: unifi.hlads.net
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: unifi-home-service
+            name: unifi-service
             port:
               number: 443

@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: unifi-home-cert
+  name: unifi-cert
   namespace: default
 spec:
   dnsNames:
-    - unifi.home.hlads.net
-  secretName: unifi-home-tls
+    - unifi.hlads.net
+  secretName: unifi-tls
   issuerRef:
     name: letsencrypt-cluster-issuer
     kind: ClusterIssuer

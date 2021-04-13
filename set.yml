@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: unifi-home-set
+  name: unifi-set
 spec:
   selector:
     matchLabels:
-      app: unifi-home
-  serviceName: "unifi-home-service"
+      app: unifi
+  serviceName: "unifi-service"
   replicas: 1
   template:
     metadata:
       labels:
-        app: unifi-home
+        app: unifi
     spec:
       containers:
-      - name: unifi-home
+      - name: unifi
         image: jacobalberty/unifi
         volumeMounts:
-        - name: unifi-home-pvc
+        - name: unifi-pvc
           mountPath: /unifi
         ports:
         - containerPort: 6789
@@ -43,7 +43,7 @@ spec:
           protocol: UDP      
   volumeClaimTemplates:
   - metadata:
-      name: unifi-home-pvc
+      name: unifi-pvc
     spec:
       accessModes:
       - ReadWriteOnce
