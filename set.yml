@@ -6,6 +6,7 @@ spec:
   selector:
     matchLabels:
       app: unifi-home
+  serviceName: "unifi-home-service"
   replicas: 1
   template:
     metadata:
@@ -15,19 +16,31 @@ spec:
       containers:
       - name: unifi-home
         image: jacobalberty/unifi
+        volumeMounts:
+        - name: unifi-home-pvc
+          mountPath: /unifi
         ports:
-        - protocol: TCP
-          port: 8080
-        - protocol: TCP
-          port: 8443
-        - protocol: TCP
-          port: 8843
-        - protocol: TCP
-          port: 8880
-        - protocol: UDP
-          port: 3478
-        - protocol: TCP
-          port: 6789
+        - containerPort: 6789
+          name: ubnt-6789
+          protocol: TCP
+        - containerPort: 8080
+          name: ubnt-8080
+          protocol: TCP
+        - containerPort: 8443
+          name: ubnt-8443
+          protocol: TCP
+        - containerPort: 3478
+          name: ubnt-3478
+          protocol: UDP
+        - containerPort: 8881
+          name: ubnt-8881
+          protocol: TCP
+        - containerPort: 8882
+          name: ubnt-8882
+          protocol: TCP
+        - containerPort: 10001
+          name: ubnt-10001
+          protocol: UDP      
   volumeClaimTemplates:
   - metadata:
       name: unifi-home-pvc

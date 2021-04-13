@@ -7,5 +7,6 @@ spec:
     app: unifi-home
   ports:
     - protocol: TCP
-      port: 443
+      name: https
+      port: 443 # Default port for image
       targetPort: 8443
