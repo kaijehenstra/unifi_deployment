@@ -16,7 +16,4 @@ spec:
         backend:
           service:
             name: unifi-home-service
-            ports:
-            - port: 443
-              protocol: TCP
-              targetPort: 8443
+            port: 443
