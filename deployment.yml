@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-home
+  labels:
+    app: unifi-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi-home
+  unifi-home:
+    metadata:
+      labels:
+        app: unifi-home
+    spec:
+      containers:
+      - name: unifi-home
+        image: jacobalberty/unifi
+        ports:
+        - port: 8080
+        - port: 8443
+        - protocol: UDP
+          port: 3478
