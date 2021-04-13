@@ -6,22 +6,28 @@ spec:
   selector:
     matchLabels:
       app: unifi-home
-  serviceName: "unifi-home-service"
   replicas: 1
   template:
     metadata:
       labels:
-        app: mypod
+        app: unifi-home
     spec:
       containers:
       - name: unifi-home
         image: jacobalberty/unifi
-        args:
-        - sleep
-        - infinity
-        volumeMounts:
-        - mountPath: "/unifi"
-          name: unifi-home-pvc
+        ports:
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 8443
+        - protocol: TCP
+          port: 8843
+        - protocol: TCP
+          port: 8880
+        - protocol: UDP
+          port: 3478
+        - protocol: TCP
+          port: 6789
   volumeClaimTemplates:
   - metadata:
       name: unifi-home-pvc
