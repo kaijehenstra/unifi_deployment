@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: unifi-set
+  namespace: unifi-ns
 spec:
   selector:
     matchLabels:

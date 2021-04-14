@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: unifi-service
+  namespace: unifi-ns
 spec:
   selector:
     app: unifi
