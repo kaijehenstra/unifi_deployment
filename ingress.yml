@@ -19,5 +19,3 @@ spec:
         backend:
           service:
             name: unifi-service
-            port:
-              number: 443

@@ -7,7 +7,28 @@ spec:
   selector:
     app: unifi
   ports:
-    - protocol: TCP
-      name: https
-      port: 443 # Default port for image
+    - port: 443 # Default port for image
       targetPort: 8443
+      name: https
+      protocol: TCP
+    - port: 8080
+      name: inform
+      protocol: TCP
+    - port: 6789
+      name: ubnt-6789
+      protocol: TCP
+    - port: 8443
+      name: ubnt-8443
+      protocol: TCP
+    - port: 3478
+      name: ubnt-3478
+      protocol: UDP
+    - port: 8881
+      name: ubnt-8881
+      protocol: TCP
+    - port: 8882
+      name: ubnt-8882
+      protocol: TCP
+    - port: 10001
+      name: ubnt-10001
+      protocol: UDP
